@@ -215,7 +215,7 @@ const Index = () => {
                   <Icon name="Trophy" className="text-yellow-600" size={24} />
                   Лучший бомбардир матча
                 </CardTitle>
-                <p className="text-sm text-muted-foreground font-halvar mt-1">Комаров • Титан • 8 голов в сезоне</p>
+                <p className="text-sm text-muted-foreground font-halvar mt-1">Комаров • Титан • 7 голов в сезоне</p>
               </div>
             </div>
           </CardHeader>
@@ -243,19 +243,19 @@ const Index = () => {
                 </div>
                 
                 <div>
-                  <h4 className="font-halvar text-sm text-muted-foreground mb-3">Способы забитых голов (всего 8)</h4>
+                  <h4 className="font-halvar text-sm text-muted-foreground mb-3">Способы забитых голов (всего 7)</h4>
                   <div className="space-y-2">
                     <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
                       <span className="font-halvar text-sm">⚽ Правая нога (игра)</span>
-                      <Badge className="bg-[#0EA5E9] font-halvar">3</Badge>
+                      <Badge className="bg-[#0EA5E9] font-halvar">4</Badge>
                     </div>
                     <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
                       <span className="font-halvar text-sm">🎯 Правая нога (пенальти)</span>
-                      <Badge className="bg-[#10b981] font-halvar">1</Badge>
+                      <Badge className="bg-[#10b981] font-halvar">2</Badge>
                     </div>
                     <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
                       <span className="font-halvar text-sm">🤾 Головой</span>
-                      <Badge className="bg-orange-500 font-halvar">0</Badge>
+                      <Badge className="bg-orange-500 font-halvar">1</Badge>
                     </div>
                   </div>
                 </div>
@@ -269,13 +269,17 @@ const Index = () => {
                       stroke="#1A1F2C" strokeWidth="3" fill="none" strokeLinecap="round"/>
                     <circle cx="100" cy="30" r="20" fill="none" stroke="#1A1F2C" strokeWidth="3"/>
                     
-                    <circle cx="120" cy="100" r="24" fill="#0EA5E9" fillOpacity="0.3" stroke="#0EA5E9" strokeWidth="2" strokeDasharray="4 2"/>
-                    <text x="120" y="95" textAnchor="middle" className="fill-blue-600 font-halvar text-xs">Правая</text>
-                    <text x="120" y="108" textAnchor="middle" className="fill-blue-600 font-halvar text-lg font-bold">3</text>
+                    <circle cx="100" cy="30" r="24" fill="#f97316" fillOpacity="0.3" stroke="#f97316" strokeWidth="2" strokeDasharray="4 2"/>
+                    <text x="100" y="20" textAnchor="middle" className="fill-orange-600 font-halvar text-xs">Голова</text>
+                    <text x="100" y="35" textAnchor="middle" className="fill-orange-600 font-halvar text-lg font-bold">1</text>
                     
-                    <circle cx="120" cy="280" r="24" fill="#10b981" fillOpacity="0.3" stroke="#10b981" strokeWidth="2" strokeDasharray="4 2"/>
+                    <circle cx="120" cy="100" r="26" fill="#0EA5E9" fillOpacity="0.3" stroke="#0EA5E9" strokeWidth="2" strokeDasharray="4 2"/>
+                    <text x="120" y="95" textAnchor="middle" className="fill-blue-600 font-halvar text-xs">Правая</text>
+                    <text x="120" y="108" textAnchor="middle" className="fill-blue-600 font-halvar text-lg font-bold">4</text>
+                    
+                    <circle cx="120" cy="280" r="26" fill="#10b981" fillOpacity="0.3" stroke="#10b981" strokeWidth="2" strokeDasharray="4 2"/>
                     <text x="120" y="272" textAnchor="middle" className="fill-green-700 font-halvar text-xs">Пенальти</text>
-                    <text x="120" y="285" textAnchor="middle" className="fill-green-700 font-halvar text-lg font-bold">1</text>
+                    <text x="120" y="285" textAnchor="middle" className="fill-green-700 font-halvar text-lg font-bold">2</text>
                   </svg>
                 </div>
               </div>
