@@ -139,10 +139,162 @@ const Index = () => {
                 <p className="text-xs md:text-sm text-muted-foreground">Хозяева</p>
               </div>
             </div>
+            
+            <Separator className="mb-4" />
+            
+            <div className="space-y-2">
+              <h3 className="font-halvar text-sm md:text-base mb-3 text-center text-muted-foreground">События матча</h3>
+              {events.sort((a, b) => {
+                const parseTime = (t: string) => {
+                  if (t === '89\'') return 89;
+                  const match = t.match(/(\d+)\+(\d+)/);
+                  if (match) return parseInt(match[1]) + parseInt(match[2]) / 10;
+                  return parseInt(t);
+                };
+                return parseTime(b.time) - parseTime(a.time);
+              }).map((event, idx) => (
+                <div key={idx} className="flex items-center justify-between py-2 border-b border-slate-100 last:border-0">
+                  <div className="flex items-center gap-2 flex-1">
+                    {event.team === 'Титан' ? (
+                      <>
+                        <Badge variant="outline" className="font-halvar text-xs min-w-[50px] justify-center">
+                          {event.time}
+                        </Badge>
+                        {event.type === 'goal' ? (
+                          <div className="flex items-center gap-1">
+                            <Icon name="Goal" size={16} className="text-[#10b981]" fallback="Circle" />
+                            <span className="font-halvar text-sm">{event.player}</span>
+                            {event.detail && <span className="text-xs text-muted-foreground">({event.detail})</span>}
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-1">
+                            <div className="w-3 h-4 bg-yellow-400 rounded-sm"></div>
+                            <span className="font-halvar text-sm">{event.player}</span>
+                          </div>
+                        )}
+                      </>
+                    ) : null}
+                  </div>
+                  
+                  <div className="flex items-center gap-2 flex-1 justify-end">
+                    {event.team === 'Легион' ? (
+                      <>
+                        {event.type === 'goal' ? (
+                          <div className="flex items-center gap-1">
+                            {event.detail && <span className="text-xs text-muted-foreground">({event.detail})</span>}
+                            <span className="font-halvar text-sm">{event.player}</span>
+                            <Icon name="Goal" size={16} className="text-[#10b981]" fallback="Circle" />
+                          </div>
+                        ) : (
+                          <div className="flex items-center gap-1">
+                            <span className="font-halvar text-sm">{event.player}</span>
+                            <div className="w-3 h-4 bg-yellow-400 rounded-sm"></div>
+                          </div>
+                        )}
+                        <Badge variant="outline" className="font-halvar text-xs min-w-[50px] justify-center">
+                          {event.time}
+                        </Badge>
+                      </>
+                    ) : null}
+                  </div>
+                </div>
+              ))}
+            </div>
           </CardContent>
         </Card>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-8">
+        <Card className="mb-6 md:mb-8 shadow-xl border-l-4 border-l-yellow-500">
+          <CardHeader className="bg-gradient-to-r from-yellow-50 to-white">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 md:w-16 md:h-16 bg-yellow-500 rounded-full flex items-center justify-center">
+                <span className="font-halvar text-white text-xl md:text-2xl">25</span>
+              </div>
+              <div className="flex-1">
+                <CardTitle className="font-halvar text-xl md:text-2xl flex items-center gap-2">
+                  <Icon name="Trophy" className="text-yellow-600" size={24} />
+                  Лучший бомбардир матча
+                </CardTitle>
+                <p className="text-sm text-muted-foreground font-halvar mt-1">Комаров • Титан • 8 голов в сезоне</p>
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                <div>
+                  <h4 className="font-halvar text-sm text-muted-foreground mb-3">Статистика голов в матче</h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                      <div className="flex items-center gap-2">
+                        <Icon name="Goal" size={20} className="text-[#10b981]" fallback="Circle" />
+                        <span className="font-halvar">Голов в матче</span>
+                      </div>
+                      <span className="font-halvar text-2xl text-[#10b981]">4</span>
+                    </div>
+                    <div className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-5 bg-yellow-400 rounded-sm"></div>
+                        <span className="font-halvar">Карточки</span>
+                      </div>
+                      <span className="font-halvar text-xl">1</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <h4 className="font-halvar text-sm text-muted-foreground mb-3">Способы забитых голов (всего 8)</h4>
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
+                      <span className="font-halvar text-sm">⚽ Правая нога (игра)</span>
+                      <Badge className="bg-[#0EA5E9] font-halvar">4</Badge>
+                    </div>
+                    <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
+                      <span className="font-halvar text-sm">🎯 Правая нога (пенальти)</span>
+                      <Badge className="bg-[#10b981] font-halvar">2</Badge>
+                    </div>
+                    <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
+                      <span className="font-halvar text-sm">⚽ Левая нога</span>
+                      <Badge className="bg-purple-500 font-halvar">1</Badge>
+                    </div>
+                    <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
+                      <span className="font-halvar text-sm">🤾 Головой</span>
+                      <Badge className="bg-orange-500 font-halvar">1</Badge>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="relative">
+                <h4 className="font-halvar text-sm text-muted-foreground mb-3 text-center">Схема забитых голов</h4>
+                <div className="relative w-full max-w-[280px] mx-auto">
+                  <svg viewBox="0 0 200 400" className="w-full h-auto">
+                    <path d="M100 50 L100 150 M100 150 L80 200 M100 150 L120 200 M80 200 L80 280 M120 200 L120 280 M100 50 L80 100 M100 50 L120 100" 
+                      stroke="#1A1F2C" strokeWidth="3" fill="none" strokeLinecap="round"/>
+                    <circle cx="100" cy="30" r="20" fill="none" stroke="#1A1F2C" strokeWidth="3"/>
+                    
+                    <circle cx="100" cy="30" r="28" fill="#f97316" fillOpacity="0.3" stroke="#f97316" strokeWidth="2" strokeDasharray="4 2"/>
+                    <text x="100" y="15" textAnchor="middle" className="fill-orange-600 font-halvar text-xs">Голова</text>
+                    <text x="100" y="25" textAnchor="middle" className="fill-orange-600 font-halvar text-lg font-bold">1</text>
+                    
+                    <circle cx="120" cy="100" r="22" fill="#0EA5E9" fillOpacity="0.3" stroke="#0EA5E9" strokeWidth="2" strokeDasharray="4 2"/>
+                    <text x="120" y="95" textAnchor="middle" className="fill-blue-600 font-halvar text-xs">Правая</text>
+                    <text x="120" y="108" textAnchor="middle" className="fill-blue-600 font-halvar text-lg font-bold">4</text>
+                    
+                    <circle cx="120" cy="280" r="26" fill="#10b981" fillOpacity="0.3" stroke="#10b981" strokeWidth="2" strokeDasharray="4 2"/>
+                    <text x="120" y="272" textAnchor="middle" className="fill-green-700 font-halvar text-xs">Пенальти</text>
+                    <text x="120" y="285" textAnchor="middle" className="fill-green-700 font-halvar text-lg font-bold">2</text>
+                    
+                    <circle cx="80" cy="100" r="20" fill="#a855f7" fillOpacity="0.3" stroke="#a855f7" strokeWidth="2" strokeDasharray="4 2"/>
+                    <text x="80" y="95" textAnchor="middle" className="fill-purple-600 font-halvar text-xs">Левая</text>
+                    <text x="80" y="108" textAnchor="middle" className="fill-purple-600 font-halvar text-lg font-bold">1</text>
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-6 md:mb-8">
           <Card className="shadow-lg hover:shadow-xl transition-shadow">
             <CardHeader className="bg-gradient-to-r from-blue-50 to-white">
               <CardTitle className="font-halvar text-xl flex items-center gap-2">
@@ -178,43 +330,6 @@ const Index = () => {
                   <span className="font-halvar">Легион</span>
                   <span className="font-halvar text-lg text-red-600">{stats.legionOnTarget}</span>
                 </div>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="shadow-lg hover:shadow-xl transition-shadow">
-            <CardHeader className="bg-gradient-to-r from-green-50 to-white">
-              <CardTitle className="font-halvar text-xl flex items-center gap-2">
-                <Icon name="Clock" className="text-[#10b981]" />
-                Хронология событий
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="pt-6">
-              <div className="space-y-3 max-h-[300px] overflow-y-auto pr-2">
-                {events.map((event, idx) => (
-                  <div key={idx} className="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors">
-                    <Badge variant="outline" className="font-halvar min-w-[60px] justify-center">
-                      {event.time}
-                    </Badge>
-                    <div className="flex-1">
-                      {event.type === 'goal' && (
-                        <div className="flex items-center gap-2">
-                          <Icon name="Goal" size={20} className="text-[#10b981]" fallback="Circle" />
-                          <span className="font-halvar">{event.player}</span>
-                          <span className="text-sm text-muted-foreground">({event.team})</span>
-                          {event.detail && <Badge variant="secondary" className="text-xs">{event.detail}</Badge>}
-                        </div>
-                      )}
-                      {event.type === 'yellow' && (
-                        <div className="flex items-center gap-2">
-                          <div className="w-4 h-5 bg-yellow-400 rounded-sm"></div>
-                          <span className="font-halvar">{event.player}</span>
-                          <span className="text-sm text-muted-foreground">({event.detail})</span>
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                ))}
               </div>
             </CardContent>
           </Card>
