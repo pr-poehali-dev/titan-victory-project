@@ -170,6 +170,7 @@ const Index = () => {
                           <div className="flex items-center gap-1">
                             <div className="w-3 h-4 bg-yellow-400 rounded-sm"></div>
                             <span className="font-halvar text-sm">{event.player}</span>
+                            {event.detail && <span className="text-xs text-muted-foreground">({event.detail})</span>}
                           </div>
                         )}
                       </>
@@ -246,15 +247,11 @@ const Index = () => {
                   <div className="space-y-2">
                     <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
                       <span className="font-halvar text-sm">⚽ Правая нога (игра)</span>
-                      <Badge className="bg-[#0EA5E9] font-halvar">4</Badge>
+                      <Badge className="bg-[#0EA5E9] font-halvar">5</Badge>
                     </div>
                     <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
                       <span className="font-halvar text-sm">🎯 Правая нога (пенальти)</span>
                       <Badge className="bg-[#10b981] font-halvar">2</Badge>
-                    </div>
-                    <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
-                      <span className="font-halvar text-sm">⚽ Левая нога</span>
-                      <Badge className="bg-purple-500 font-halvar">1</Badge>
                     </div>
                     <div className="flex items-center justify-between p-2 bg-slate-50 rounded">
                       <span className="font-halvar text-sm">🤾 Головой</span>
@@ -276,17 +273,13 @@ const Index = () => {
                     <text x="100" y="15" textAnchor="middle" className="fill-orange-600 font-halvar text-xs">Голова</text>
                     <text x="100" y="25" textAnchor="middle" className="fill-orange-600 font-halvar text-lg font-bold">1</text>
                     
-                    <circle cx="120" cy="100" r="22" fill="#0EA5E9" fillOpacity="0.3" stroke="#0EA5E9" strokeWidth="2" strokeDasharray="4 2"/>
+                    <circle cx="120" cy="100" r="24" fill="#0EA5E9" fillOpacity="0.3" stroke="#0EA5E9" strokeWidth="2" strokeDasharray="4 2"/>
                     <text x="120" y="95" textAnchor="middle" className="fill-blue-600 font-halvar text-xs">Правая</text>
-                    <text x="120" y="108" textAnchor="middle" className="fill-blue-600 font-halvar text-lg font-bold">4</text>
+                    <text x="120" y="108" textAnchor="middle" className="fill-blue-600 font-halvar text-lg font-bold">5</text>
                     
                     <circle cx="120" cy="280" r="26" fill="#10b981" fillOpacity="0.3" stroke="#10b981" strokeWidth="2" strokeDasharray="4 2"/>
                     <text x="120" y="272" textAnchor="middle" className="fill-green-700 font-halvar text-xs">Пенальти</text>
                     <text x="120" y="285" textAnchor="middle" className="fill-green-700 font-halvar text-lg font-bold">2</text>
-                    
-                    <circle cx="80" cy="100" r="20" fill="#a855f7" fillOpacity="0.3" stroke="#a855f7" strokeWidth="2" strokeDasharray="4 2"/>
-                    <text x="80" y="95" textAnchor="middle" className="fill-purple-600 font-halvar text-xs">Левая</text>
-                    <text x="80" y="108" textAnchor="middle" className="fill-purple-600 font-halvar text-lg font-bold">1</text>
                   </svg>
                 </div>
               </div>
