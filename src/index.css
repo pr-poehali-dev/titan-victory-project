@@ -1,3 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+
+@font-face {
+  font-family: "HalvarBreit";
+  src: url("https://cdn.poehali.dev/fonts/HalvarBreit-Blk.woff2")
+    format("woff2");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,8 +24,13 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 210 100% 15%;
+    --primary-foreground: 0 0% 100%;
+
+    --sport-green: 142 76% 36%;
+    --sport-blue: 199 89% 48%;
+    --sport-red: 0 84% 60%;
+    --sport-yellow: 45 93% 47%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -97,5 +113,11 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "Roboto", sans-serif;
+  }
+
+  .font-halvar {
+    font-family: "HalvarBreit", "Roboto", sans-serif;
+    font-weight: 900;
   }
 }
